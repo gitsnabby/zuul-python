@@ -8,7 +8,9 @@ from handlers.roomhandler import RoomHandler
 from handlers.commandhandler import CommandHandler
 from parser.parser import Parser
 
-class Game:
+
+
+class Game(parent=None):
     
     finished = False
 
@@ -34,7 +36,7 @@ class Game:
         self.parser = Parser(self)
     
     def play(self):
-        self.player_name = input("\nEnter your name: ")
+        self.player_name = "Tuvix" #input("\nEnter your name: ")
         self.setup()
         self.print_welcome()
         while self.finished == False:
@@ -56,11 +58,11 @@ class Game:
         return self.command_handler
 
     def print_welcome(self):
-        print("\nWelcome %s, to World of Zuul: Python edition!\nType 'help' if you need help." % self.player_name)
-        print(self.get_player().get_room().get_long_description())
+        super().print_msg("\nWelcome %s, to World of Zuul: Python edition!\nType 'help' if you need help." % self.player_name)
+        super().print_msg(self.get_player().get_room().get_long_description())
     
     def print_quit_message(self):
-        print("\nThank you for playing World of Zuul: Python edition!\n\nWritten by J.L.G. McBride, Autumn 2017.\n")
+        super().print_msg("\nThank you for playing World of Zuul: Python edition!\n\nWritten by J.L.G. McBride, Autumn 2017.\n")
 
         
     
